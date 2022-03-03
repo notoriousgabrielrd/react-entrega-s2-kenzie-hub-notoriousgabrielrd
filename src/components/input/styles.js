@@ -14,6 +14,7 @@ export const InputContainer = styled.div`
   background-color:var(--grey-2) ;
   background: var(--grey-2);
   padding: 0.4rem;
+  height: 38px;
   width: 100%;
   transition: 0.5s;
   border: 1.5px solid var(--grey-3);
@@ -35,7 +36,7 @@ export const InputContainer = styled.div`
     flex: 1;
     border: 0;
     color: var(--grey-0);
-
+    padding: 10px 18px;
     &::placeholder {
       color: var(--grey-1);
     }

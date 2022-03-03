@@ -14,8 +14,8 @@ background: var(--grey-2);
 
 
 export const Form = styled.form`
-  max-width: 370px;
-  max-height:350px ;
+  width: 370px;
+  height:450 ;
   background-color: var(--grey-3);
   border-radius: 8px;
   display: flex;

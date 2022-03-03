@@ -37,7 +37,7 @@ const Login = () => {
   };
 
   const redirectSignIn = () => {
-    history.push("/dashboard");
+    history.push("/cadastro");
   };
 
   return (
