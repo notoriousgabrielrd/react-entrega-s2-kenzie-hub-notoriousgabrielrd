@@ -7,26 +7,37 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../../components/input";
 import api from "../../services/api";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const schema = yup.object().shape({
     email: yup.string().required("Campo obrigatorio").email("Email invalido"),
     password: yup.string().required("Campo obrigatorio"),
   });
-
+  const history = useHistory();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
-
   const handleLogin = async (data) => {
     console.log(data);
     const response = await api.post("/sessions", data).catch((err) => {
-      toast.error("erro na autenticacao");
+      toast.error("Ops! Parece que temos um erro na autenticao...");
     });
-    toast.success("Login feito com sucesso!");
-    console.log(response);
+
+    const { user, token } = response.data;
+
+    localStorage.setItem("@KenzieHUB:token", token);
+    localStorage.setItem("@KenzieHUB:user", JSON.stringify(user));
+
+    toast.success("Oba! Login feito com sucesso.");
+    console.log(response.data);
+    history.push("/dashboard");
+  };
+
+  const redirectSignIn = () => {
+    history.push("/dashboard");
   };
 
   return (
@@ -60,6 +71,7 @@ const Login = () => {
       </Form>
       <span>Ainda nao possui uma conta?</span>
       <Button
+        onClick={() => redirectSignIn()}
         sx={{ backgroundColor: "var(--grey-1)" }}
         type="button"
         variant="contained"
