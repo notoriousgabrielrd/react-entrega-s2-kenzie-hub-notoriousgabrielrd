@@ -96,7 +96,11 @@ const Cadastro = () => {
           type="password"
           error={errors.confirm_password?.message}
         />
-        <select name="course_module" {...register("course_module")}>
+        <select
+          className="course-select"
+          name="course_module"
+          {...register("course_module")}
+        >
           <option value="Primeiro módulo (Introdução ao Frontend)">
             Primeiro módulo (Introdução ao Frontend)
           </option>

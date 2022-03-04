@@ -38,3 +38,13 @@ span {
   justify-content: space-between;
   width: 20rem;
 }
+
+.course-select {
+  background-color: var(--grey-2);
+  background: var(--grey-2);
+  padding: 0.4rem;
+  height: 38px;
+  width: 100%;
+  margin-bottom: 15px;
+  color: var(--grey-1);
+}

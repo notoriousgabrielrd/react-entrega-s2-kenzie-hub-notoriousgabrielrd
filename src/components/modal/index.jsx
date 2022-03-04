@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../button/index";
 
-const Modal = ({ setShowModal, handleTech, setToTrue, setUpdate }) => {
+const Modal = ({ setShowModal, handleTech, setToTrue, setUpdate, update }) => {
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatorio"),
     status: yup.string().required("campo obrigatorio"),
@@ -50,7 +50,7 @@ const Modal = ({ setShowModal, handleTech, setToTrue, setUpdate }) => {
             type="submit"
             onClick={() => {
               setToTrue(true);
-              setUpdate(!true);
+              setUpdate(!update);
             }}
           >
             Cadastrar

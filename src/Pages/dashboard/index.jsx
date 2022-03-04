@@ -52,6 +52,7 @@ const Dashboard = ({ dataUser }) => {
           handleTech={handleTech}
           setToTrue={setShowTech}
           setUpdate={setUpdate}
+          update={update}
         />
       )}
 
