@@ -1,0 +1,29 @@
+.main {
+  background-color: var(--grey-4);
+  height: 75rem;
+}
+
+.nome {
+  color: var(--grey-0);
+}
+
+.curso {
+  color: var(--grey-1);
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+}
+
+.card-modal {
+  color: var(--grey-1);
+  display: flex;
+  justify-content: center;
+  background-color: var(--grey-3);
+  height: 300px;
+  width: 50vw;
+}

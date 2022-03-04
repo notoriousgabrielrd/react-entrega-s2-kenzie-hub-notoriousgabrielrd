@@ -8,6 +8,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Container, Form } from "../cadastro/styles";
 import "./style.css";
+import Select from "../../components/select/index";
+import { useState } from "react";
 
 const Cadastro = () => {
   const history = useHistory();
@@ -20,6 +22,7 @@ const Cadastro = () => {
       .string()
       .oneOf([yup.ref("password")], "As senhas nao coincidem")
       .required("Campo obrigatorio"),
+    course_module: yup.string().required("campo obrigatorio"),
   });
 
   const {
@@ -28,8 +31,16 @@ const Cadastro = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const handleSignIn = (data) => {
-    console.log(data);
+  const handleSignIn = async (data) => {
+    delete data.confirm_password;
+    const teste = { ...data, contact: "teste", bio: "teste" };
+
+    const response = await api.post("/users", teste).catch((err) => {
+      toast.error("Eita! Parece que temos um erro no cadastro...");
+    });
+
+    toast.success("Oba! Voce foi cadastrado! ");
+    console.log(teste);
   };
 
   const redirectLogin = () => {
@@ -85,7 +96,20 @@ const Cadastro = () => {
           type="password"
           error={errors.confirm_password?.message}
         />
-        {/* <Input /> */}
+        <select name="course_module" {...register("course_module")}>
+          <option value="Primeiro módulo (Introdução ao Frontend)">
+            Primeiro módulo (Introdução ao Frontend)
+          </option>
+          <option value=" Segundo módulo (Frontend Avançado)">
+            Segundo módulo (Frontend Avançado)
+          </option>
+          <option value="Terceiro módulo (Introdução ao Backend)">
+            Terceiro módulo (Introdução ao Backend)
+          </option>
+          <option value="Quarto módulo (Backend Avançado)">
+            Quarto módulo (Backend Avançado)
+          </option>
+        </select>
         <Button type="submit" backgroundColor="var(--color-primary-negative)">
           Cadastrar
         </Button>

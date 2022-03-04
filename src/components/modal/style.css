@@ -1,0 +1,25 @@
+.div-modal {
+  color: var(--grey-1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  background-color: var(--grey-2);
+}
+
+.button-modal {
+  width: 50px;
+  height: 30px;
+}
+
+.layer-modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

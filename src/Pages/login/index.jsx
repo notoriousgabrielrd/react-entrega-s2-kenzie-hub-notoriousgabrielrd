@@ -9,7 +9,7 @@ import api from "../../services/api";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setData }) => {
   const schema = yup.object().shape({
     email: yup.string().required("Campo obrigatorio").email("Email invalido"),
     password: yup.string().required("Campo obrigatorio"),
@@ -22,6 +22,7 @@ const Login = () => {
   } = useForm({ resolver: yupResolver(schema) });
   const handleLogin = async (data) => {
     console.log(data);
+
     const response = await api.post("/sessions", data).catch((err) => {
       toast.error("Ops! Parece que temos um erro na autenticao...");
     });
@@ -32,6 +33,7 @@ const Login = () => {
     localStorage.setItem("@KenzieHUB:user", JSON.stringify(user));
 
     toast.success("Oba! Login feito com sucesso.");
+    setData(response.data);
     console.log(response.data);
     history.push("/dashboard");
   };
