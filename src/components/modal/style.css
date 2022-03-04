@@ -2,11 +2,12 @@
   color: var(--grey-1);
   display: flex;
   flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 300px;
+  width: 35vw;
   height: 300px;
-  background-color: var(--grey-2);
+  background-color: var(--grey-3);
 }
 
 .button-modal {
@@ -22,4 +23,42 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.div-h3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: var(--grey-2);
+  padding: 20px 0 20px 0px;
+  height: 10vh;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.h3-modal {
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+.input-modal {
+  background-color: var(--grey-2);
+  background: var(--grey-2);
+  padding: 0.4rem;
+  height: 38px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.input-modal::placeholder {
+  color: var(--grey-1);
+}
+
+.form-modal {
+  margin-bottom: 10vh;
+}
+
+.p-label {
+  color: var(--grey-1);
 }

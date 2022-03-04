@@ -7,7 +7,7 @@ export const Container = styled.button`
  
   border: 1.5px solid ${(props) => props.backgroundColor};
   transition: 0.5s;
-  width: ${(props) => props.width ? props.backgroundColor : "100%"};
+  width: ${(props) => props.width ? props.width : "100%"};
   height: ${(props) => props.height ? props.height : "48px "};
   padding: 10px 18px;
   font-size:var(--title-1) ;

@@ -1,0 +1,20 @@
+.div-card-tech {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  max-width: 100%;
+}
+
+.div-tech {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  height: 70px;
+  margin: 4px 10px;
+  background-color: var(--grey-4);
+  border: solid var(--grey-4);
+  border-radius: 4px;
+}
