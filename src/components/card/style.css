@@ -18,3 +18,9 @@
   border: solid var(--grey-4);
   border-radius: 4px;
 }
+
+.div-tech:hover {
+  cursor: pointer;
+  background-color: var(--grey-1);
+  color: white;
+}

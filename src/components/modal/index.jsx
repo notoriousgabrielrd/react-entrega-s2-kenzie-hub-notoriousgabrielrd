@@ -4,7 +4,15 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Button from "../button/index";
 
-const Modal = ({ setShowModal, handleTech, setToTrue, setUpdate, update }) => {
+const Modal = ({
+  setShowModal,
+  handleTech,
+  setToTrue,
+  setUpdate,
+  update,
+  changes,
+  setChanges,
+}) => {
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatorio"),
     status: yup.string().required("campo obrigatorio"),
@@ -17,7 +25,13 @@ const Modal = ({ setShowModal, handleTech, setToTrue, setUpdate, update }) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   return (
-    <div className="layer-modal" onClick={() => setShowModal(false)}>
+    <div
+      className="layer-modal"
+      onClick={() => {
+        setShowModal(false);
+        setChanges(false);
+      }}
+    >
       <div className="div-modal" onClick={(e) => e.stopPropagation()}>
         <div className="div-h3">
           <h3 className="h3-modal"> Cadastrar Tecnologia</h3>
@@ -43,18 +57,23 @@ const Modal = ({ setShowModal, handleTech, setToTrue, setUpdate, update }) => {
             <option value="Intermediario">Intermediario</option>
             <option value="Avancado">Avancado</option>
           </select>
-          <Button
-            width={"100%"}
-            height={"50px"}
-            backgroundColor={"var(--color-primary)"}
-            type="submit"
-            onClick={() => {
-              setToTrue(true);
-              setUpdate(!update);
-            }}
-          >
-            Cadastrar
-          </Button>
+          {changes ? (
+            <Button>Excluir</Button>
+          ) : (
+            <Button
+              width={"100%"}
+              height={"50px"}
+              backgroundColor={"var(--color-primary)"}
+              type="submit"
+              onClick={() => {
+                // setToTrue(true);
+                console.log(changes);
+                setUpdate(!update);
+              }}
+            >
+              Cadastrar
+            </Button>
+          )}
         </form>
       </div>
     </div>

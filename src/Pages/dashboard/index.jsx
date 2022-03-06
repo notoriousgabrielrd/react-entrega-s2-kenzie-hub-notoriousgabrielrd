@@ -14,20 +14,15 @@ const Dashboard = ({ dataUser }) => {
   const [token] = useState(localStorage.getItem("@KenzieHUB:token") || "");
   const [user, setUser] = useState({});
   const [showModal, setShowModal] = useState(false);
-  const [showTech, setShowTech] = useState(false);
+  // const [showTech, setShowTech] = useState(false);
+  const [changes, setChanges] = useState(false);
   const [techs, setTechs] = useState();
   const [update, setUpdate] = useState(false);
-
-  //   // fazer o get na bse de dados pelo id ok
-  //   // o que trouxer eu salvo na localStorage => os dados do user ok
-  //   // response.data joga para o user ( setUser)
-  //   // passar o map dentro do meu user ( setUser)
-  //   // qnd der clique no modal preciso dar um setUpdate(!update)
+  console.log(changes);
 
   async function getUserPerId() {
     const id = JSON.parse(tokenId);
     const response = await api.get(`/users/${id.id}`);
-    console.log(response);
     setUser(response.data);
   }
 
@@ -50,9 +45,11 @@ const Dashboard = ({ dataUser }) => {
         <Modal
           setShowModal={setShowModal}
           handleTech={handleTech}
-          setToTrue={setShowTech}
+          // setToTrue={setShowTech}
           setUpdate={setUpdate}
           update={update}
+          changes={changes}
+          setChanges={setChanges}
         />
       )}
 
@@ -68,7 +65,7 @@ const Dashboard = ({ dataUser }) => {
             type="button"
             onClick={() => {
               setShowModal(true);
-              setUpdate(!update);
+              // setUpdate(!update);
             }}
             backgroundColor="var(--grey-3)"
             width={"10px"}
@@ -82,8 +79,15 @@ const Dashboard = ({ dataUser }) => {
             {user.techs &&
               React.Children.toArray(
                 user.techs.map((value, index) => {
-                  console.log(value);
-                  return <Card value={value} />;
+                  return (
+                    <Card
+                      id={value.id}
+                      value={value}
+                      changes={changes}
+                      setChanges={setChanges}
+                      setShowModal={setShowModal}
+                    />
+                  );
                 })
               )}
           </div>

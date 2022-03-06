@@ -1,9 +1,31 @@
+import { useEffect, useState } from "react";
+import api from "../../services/api";
 import "./style.css";
 
-const Card = ({ value }) => {
+const Card = ({ value, changes, setChanges, setShowModal, id }) => {
+  const [att, setAtt] = useState(false);
+
+  async function deletePerId(deletedId) {
+    const response = await api.delete(`/users/tech/${deletedId}`);
+    console.log(response);
+  }
+
+  // useEffect(() => {
+  //   deletePerId();
+  // }, [att]);
+
   return (
-    <div className="div-tech">
-      <div className="div-card-tech ">{value.title}</div>
+    <div
+      id={id}
+      className="div-tech"
+      onClick={() => {
+        setChanges(true);
+        setShowModal(true);
+        setAtt(!att);
+        deletePerId(id);
+      }}
+    >
+      <h4 className="div-card-tech ">{value.title}</h4>
       <div className="div-card-tech ">{value.status}</div>
     </div>
   );
