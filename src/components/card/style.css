@@ -24,3 +24,15 @@
   background-color: var(--grey-1);
   color: white;
 }
+
+@media (max-width: 800px) {
+  .div-card-tech {
+    font-size: 10px;
+  }
+  .div-tech {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}

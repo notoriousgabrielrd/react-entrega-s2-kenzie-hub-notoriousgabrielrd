@@ -6,10 +6,11 @@ import Modal from "../../components/modal";
 import api from "../../services/api";
 import Card from "../../components/card";
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 // posso user Params para pegar as informacoes a parit do Id
 
-const Dashboard = ({ dataUser }) => {
+const Dashboard = ({ dataUser, authenticated, setAuthenticated }) => {
   const [tokenId] = useState(localStorage.getItem("@KenzieHUB:user") || "");
   const [token] = useState(localStorage.getItem("@KenzieHUB:token") || "");
   const [user, setUser] = useState({});
@@ -18,19 +19,19 @@ const Dashboard = ({ dataUser }) => {
   const [changes, setChanges] = useState(false);
   const [techs, setTechs] = useState();
   const [update, setUpdate] = useState(false);
-  console.log(changes);
 
   async function getUserPerId() {
     const id = JSON.parse(tokenId);
     const response = await api.get(`/users/${id.id}`);
     setUser(response.data);
+    console.log(user);
   }
 
   useEffect(() => {
     getUserPerId();
   }, [update]);
 
-  console.log(user.techs);
+  console.log(authenticated);
 
   const handleTech = async (data) => {
     const response = await api.post("/users/techs", data, {
@@ -56,8 +57,8 @@ const Dashboard = ({ dataUser }) => {
       <div className="main">
         <Header />
         <Container>
-          <h3 className="nome">Ola,{dataUser.user.name}</h3>
-          <h3 className="curso">{dataUser.user.course_module}</h3>
+          <h3 className="nome">Ola,{user.name}</h3>
+          <h3 className="curso">{user.course_module}</h3>
         </Container>
         <div className="card">
           <h3>Tecnologias</h3>

@@ -8,8 +8,9 @@ import Input from "../../components/input";
 import api from "../../services/api";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
-const Login = ({ setData }) => {
+const Login = ({ setData, authenticated, setAuthenticated }) => {
   const schema = yup.object().shape({
     email: yup.string().required("Campo obrigatorio").email("Email invalido"),
     password: yup.string().required("Campo obrigatorio"),
@@ -31,6 +32,7 @@ const Login = ({ setData }) => {
 
     localStorage.setItem("@KenzieHUB:token", token);
     localStorage.setItem("@KenzieHUB:user", JSON.stringify(user));
+    setAuthenticated(true);
 
     toast.success("Oba! Login feito com sucesso.");
     setData(response.data);
@@ -44,9 +46,9 @@ const Login = ({ setData }) => {
 
   return (
     <Container>
-      <span className="title-login" component={"h2"}>
+      <h2 className="title-login" component={"h2"}>
         Kenzien HUB
-      </span>
+      </h2>
       <Form onSubmit={handleSubmit(handleLogin)} className="form-login">
         <span className="span-login">Login</span>
         <Input
@@ -71,7 +73,7 @@ const Login = ({ setData }) => {
           Entrar
         </Button>
       </Form>
-      <span>Ainda nao possui uma conta?</span>
+      <span className="span-info">Ainda nao possui uma conta?</span>
       <Button
         onClick={() => redirectSignIn()}
         sx={{ backgroundColor: "var(--grey-1)" }}

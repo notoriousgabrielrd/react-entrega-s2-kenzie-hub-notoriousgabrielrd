@@ -8,6 +8,15 @@ export const Container = styled.div`
     margin-left: 6px;
     color: var(--grey-1);
   }
+  @media(max-width: 800px) {
+     display:flex ;
+     align-items: flex-start;
+     flex-direction:column ;
+     flex-wrap:wrap ;
+
+
+  }
+
 `;
 
 export const InputContainer = styled.div`
@@ -27,7 +36,8 @@ export const InputContainer = styled.div`
     props.isErrored &&
     css`
       border-color: var(--color-primary);
-    `}
+    `
+  }
 
   input {
     background-color: green;
@@ -41,5 +51,22 @@ export const InputContainer = styled.div`
       color: var(--grey-1);
     }
    
+    @media(max-width: 800px) {
+      display:flex ;
+      flex-direction: column;
+      flex-wrap:wrap ;
+      max-width: 75% ;
+    }
+
+    
   }
+
+  @media(max-width: 800px) {
+      display:flex ;
+      flex-direction: column;
+      flex-wrap:wrap ;
+      max-width: 300px ;
+  }
+
+
 `;

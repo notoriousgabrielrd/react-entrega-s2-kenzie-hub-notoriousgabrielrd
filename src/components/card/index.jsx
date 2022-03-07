@@ -10,10 +10,6 @@ const Card = ({ value, changes, setChanges, setShowModal, id }) => {
     console.log(response);
   }
 
-  // useEffect(() => {
-  //   deletePerId();
-  // }, [att]);
-
   return (
     <div
       id={id}

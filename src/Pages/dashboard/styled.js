@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 
 
+
+
 export const Container = styled.div`
  background-color: ${(props) => props.backgroundColor ? props.backgroundColor : "var(--grey-3)"};
 display: flex;
@@ -9,6 +11,14 @@ justify-content: space-around;
 align-items: center;
 height: 8rem;
 width: 100%;
+
+@media(max-width: 800px) {
+    flex-direction: column;
+    position: relative;
+  }
+
+
+
 `
 
 export const Button = styled.button`
